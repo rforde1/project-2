@@ -92,4 +92,16 @@ module.exports = function(app) {
       res.json(results);
     });
   });
+
+  app.post("/api/posts", (req, res) => {
+    db.Post.create(req.body).then(results => {
+      res.json(results);
+    });
+  });
+
+  app.post("/api/replies/", (req, res) => {
+    db.Reply.create(req.body).then(results => {
+      res.json(results);
+    });
+  });
 }; //end of exports
