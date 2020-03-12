@@ -59,10 +59,11 @@ module.exports = function(app) {
 
   app.get("/api/posts/category/:categoryID", (req, res) => {
     db.Post.findAll({
+      order: [["updatedAt", "DESC"]],
       where: {
         CategoryId: req.params.categoryID
       },
-      include: [db.Category, db.User]
+      include: [db.Category, db.User, db.Reply]
     }).then(results => {
       res.json(results);
     });
@@ -70,10 +71,11 @@ module.exports = function(app) {
 
   app.get("/api/posts/user/:userID", (req, res) => {
     db.Post.findAll({
+      order: [["updatedAt", "DESC"]],
       where: {
         UserId: req.params.userID
       },
-      include: [db.User, db.Category]
+      include: [db.User, db.Category, db.Reply]
     }).then(results => {
       res.json(results);
     });
@@ -81,6 +83,7 @@ module.exports = function(app) {
 
   app.get("/api/replies/:postID", (req, res) => {
     db.Reply.findAll({
+      order: [["updatedAt", "ASC"]],
       where: {
         PostId: req.params.postID
       },
