@@ -50,4 +50,43 @@ module.exports = function(app) {
       });
     }
   });
-};
+
+  app.get("/api/categories", (_req, res) => {
+    db.Category.findAll().then(results => {
+      res.json(results);
+    });
+  });
+
+  app.get("/api/posts/category/:categoryID", (req, res) => {
+    db.Post.findAll({
+      where: {
+        CategoryId: req.params.categoryID
+      },
+      include: [db.Category, db.User]
+    }).then(results => {
+      res.json(results);
+    });
+  });
+
+  app.get("/api/posts/user/:userID", (req, res) => {
+    db.Post.findAll({
+      where: {
+        UserId: req.params.userID
+      },
+      include: [db.User, db.Category]
+    }).then(results => {
+      res.json(results);
+    });
+  });
+
+  app.get("/api/replies/:postID", (req, res) => {
+    db.Reply.findAll({
+      where: {
+        PostId: req.params.postID
+      },
+      include: [db.User, db.Post]
+    }).then(results => {
+      res.json(results);
+    });
+  });
+}; //end of exports
