@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "1g9s9r5",
+    "password": "root",
     "database": "archer_forums",
     "host": "127.0.0.1",
     "dialect": "mysql"
