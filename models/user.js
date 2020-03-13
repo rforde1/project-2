@@ -31,6 +31,13 @@ module.exports = function(sequelize, DataTypes) {
       null
     );
   });
+  User.addHook("beforeBulkUpdate", function(user) {
+    user.password = bcrypt.hashSync(
+      user.attributes.password,
+      bcrypt.genSaltSync(10),
+      null
+    );
+  });
 
   User.associate = function(models) {
     User.hasMany(models.Post, {

@@ -93,6 +93,12 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/categories", (req, res) => {
+    db.Category.create(req.body).then(results => {
+      res.json(results);
+    });
+  });
+
   app.post("/api/posts", (req, res) => {
     db.Post.create(req.body).then(results => {
       res.json(results);
@@ -101,6 +107,51 @@ module.exports = function(app) {
 
   app.post("/api/replies/", (req, res) => {
     db.Reply.create(req.body).then(results => {
+      res.json(results);
+    });
+  });
+
+  app.delete("/api/posts/:postID", (req, res) => {
+    db.Post.destroy({
+      where: {
+        id: req.params.postID
+      }
+    }).then(results => {
+      res.json(results);
+    });
+  });
+
+  app.delete("/api/replies/:replyID", (req, res) => {
+    db.Reply.destroy({
+      where: {
+        id: req.params.replyID
+      }
+    }).then(results => {
+      res.json(results);
+    });
+  });
+  // *** NOT WORKING ***
+  // app.delete("/api/users/:userID", (req, res) => {
+  //   db.User.destroy({
+  //     where: {
+  //       id: req.params.userID
+  //     }
+  //   }).then(results => {
+  //     res.json(results);
+  //   });
+  // });
+  app.put("/api/users/:userID", (req, res) => {
+    db.User.update(
+      {
+        email: req.body.email,
+        password: req.body.password
+      },
+      {
+        where: {
+          id: req.params.userID
+        }
+      }
+    ).then(results => {
       res.json(results);
     });
   });
