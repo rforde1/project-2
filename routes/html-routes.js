@@ -26,18 +26,27 @@ module.exports = function(app) {
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, function(req, res) {
     // res.sendFile(path.join(__dirname, "../public/members.html"));
-    db.User.findOne(
-      {
-        include: [db.Post]
+    db.User.findOne({
+      where: {
+        id: req.user.id
       },
-      {
-        where: {
-          id: req.user.id
-        }
-      }
-    ).then(results => {
-      console.log(results);
-      res.render("profile", results);
+      include: [db.Post]
+    }).then(results => {
+      let posts = [];
+      results.dataValues.Posts.forEach(element => {
+        let thisPost = {
+          title: element.dataValues.title,
+          id: element.dataValues.id
+        };
+        posts.push(thisPost);
+      });
+      let user = {
+        email: results.dataValues.email,
+        displayName: results.dataValues.displayName,
+        bio: results.dataValues.displayName,
+        posts: posts
+      };
+      res.render("profile", user);
     });
   });
 
