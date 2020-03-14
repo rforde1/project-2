@@ -16,6 +16,20 @@ module.exports = function(sequelize, DataTypes) {
     password: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    bio: {
+      type: DataTypes.STRING,
+      defaultValue: "this user has not created a bio yet",
+      validate: {
+        len: [1, 240]
+      }
+    },
+    displayName: {
+      type: DataTypes.STRING,
+      defaultValue: "Anonymous",
+      validate: {
+        len: [1, 20]
+      }
     }
   });
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
@@ -32,7 +46,7 @@ module.exports = function(sequelize, DataTypes) {
     );
   });
   User.addHook("beforeBulkUpdate", function(user) {
-    user.password = bcrypt.hashSync(
+    user.attributes.password = bcrypt.hashSync(
       user.attributes.password,
       bcrypt.genSaltSync(10),
       null
