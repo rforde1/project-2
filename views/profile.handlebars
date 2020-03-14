@@ -1,0 +1,32 @@
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/logout">
+        Logout
+      </a>
+    </div>
+  </div>
+</nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h2>{{displayName}}'s Page</h2>
+        <h4>Email: {{email}}</h4>
+        <h4>Bio: {{bio}}</h4>
+
+        <ul>
+            {{#each posts}}
+            <li data-postID={{id}}> {{title}} </li>
+            {{/each}}
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+{{!-- <script> src="js/members.js"</script> --}}
