@@ -2,3 +2,21 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
+
+body{
+  /* background-color: chartreuse; */
+}
+
+.signup-image{
+  height: 100vh;
+  background-size: cover;
+  background-image: url(../img/archer2.jpg) ;
+}
+
+.form-signup{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+}
