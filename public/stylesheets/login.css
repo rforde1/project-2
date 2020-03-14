@@ -1,0 +1,27 @@
+body{
+    background-image: url('../img/archerhomepage.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.primary-content{
+    border-color:black 5px;
+}
+
+@font-face{
+    font-family: baveuse;
+  src: url(../txt/baveuse.ttf);
+}
+
+.title{
+    font-family: baveuse;
+    color:rgb(224, 151, 14);
+    font-size: 45px;
+}
+
+.login{
+    font-family: baveuse;
+    color:rgb(224, 151, 14);
+    font-size: 25px;
+}
