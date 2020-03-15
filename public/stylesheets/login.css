@@ -4,24 +4,30 @@ body{
     background-attachment: fixed;
     background-size: cover;
 }
-
-.primary-content{
-    border-color:black 5px;
-}
-
+/* Imported font for archer */
 @font-face{
     font-family: baveuse;
   src: url(../txt/baveuse.ttf);
+}
+@font-face{
+    font-family: baveuse-3d;
+  src: url(../txt/baveuse\ 3d.ttf);
 }
 
 .title{
     font-family: baveuse;
     color:rgb(224, 151, 14);
     font-size: 45px;
+    text-shadow: 5px 5px 5px red
 }
 
 .login{
     font-family: baveuse;
     color:rgb(224, 151, 14);
     font-size: 25px;
+    text-shadow:  5px 5px 5px red
+}
+
+.sign-up-link:hover{
+    font-family: baveuse-3d;
 }
