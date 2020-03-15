@@ -52,7 +52,9 @@ module.exports = function(app) {
   });
 
   app.get("/api/categories", (_req, res) => {
-    db.Category.findAll().then(results => {
+    db.Category.findAll({
+      include: [db.Post]
+    }).then(results => {
       res.json(results);
     });
   });
