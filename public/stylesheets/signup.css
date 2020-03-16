@@ -1,3 +1,4 @@
+/* Element Selectors */
 body{
     background-image: url('../img/archer2.jpg');
     background-repeat: no-repeat;
@@ -5,7 +6,7 @@ body{
     background-size: cover;
 }
 
-
+/* Imported Fonts */
 @font-face{
     font-family: baveuse;
   src: url(../txt/baveuse.ttf);
@@ -14,11 +15,11 @@ body{
     font-family: baveuse-3d;
   src: url(../txt/baveuse\ 3d.ttf);
 }
-
+/* Class Selectors */
 .title{
     clear: both;
     font-family: baveuse;
-    color:rgb(224, 151, 14);
+    color:rgb(173, 102, 21);
     font-size: 45px;
     text-shadow: 5px 5px 5px gray;
 }
@@ -26,7 +27,7 @@ body{
 .login{
     clear: both;
     font-family: baveuse;
-    color:rgb(224, 151, 14);
+    color:rgb(173, 102, 21);
     font-size: 25px;
     text-shadow:  5px 5px 5px gray;
 }
@@ -39,3 +40,4 @@ body{
     float: left;
     
 }
+/*  */
