@@ -40,4 +40,9 @@ body{
     float: left;
     
 }
-/*  */
+/* Media Queries */
+@media only screen and (max-width: 992px) {
+    .lana-float-left {
+        display: none;
+      }
+    }
