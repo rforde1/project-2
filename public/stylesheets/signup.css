@@ -1,3 +1,4 @@
+/* Element Selectors */
 body{
     background-image: url('../img/archer2.jpg');
     background-repeat: no-repeat;
@@ -5,7 +6,7 @@ body{
     background-size: cover;
 }
 
-
+/* Imported Fonts */
 @font-face{
     font-family: baveuse;
   src: url(../txt/baveuse.ttf);
@@ -14,7 +15,7 @@ body{
     font-family: baveuse-3d;
   src: url(../txt/baveuse\ 3d.ttf);
 }
-
+/* Class Selectors */
 .title{
     clear: both;
     font-family: baveuse;
@@ -39,3 +40,4 @@ body{
     float: left;
     
 }
+/*  */

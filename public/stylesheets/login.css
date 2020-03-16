@@ -1,3 +1,4 @@
+/* Login Selectors */
 body{
     background-image: url('../img/archerhomepage.jpg');
     background-repeat: no-repeat;
@@ -13,7 +14,7 @@ body{
     font-family: baveuse-3d;
   src: url(../txt/baveuse\ 3d.ttf);
 }
-
+/* Class Selectors */
 .title{
     font-family: baveuse;
     color:rgb(224, 151, 14);
@@ -31,3 +32,4 @@ body{
 .sign-up-link:hover{
     font-family: baveuse-3d;
 }
+/*  */
