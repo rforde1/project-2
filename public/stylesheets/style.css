@@ -2,7 +2,6 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
-/* Imported fonts */
 @font-face{
   font-family: baveuse;
 src: url(../txt/baveuse.ttf);
@@ -11,7 +10,7 @@ src: url(../txt/baveuse.ttf);
   font-family: baveuse-3d;
 src: url(../txt/baveuse\ 3d.ttf);
 }
-/* Element Selectors */
+
 body{
   /* background-color: chartreuse; */
 }
@@ -19,7 +18,7 @@ body{
 h1,h2,h3{
   font-family: baveuse;
 }
-/* Class Selectors */
+
 .signup-image{
   height: 100vh;
   background-size: cover;
@@ -32,4 +31,3 @@ h1,h2,h3{
   align-items: center;
   /* height: 100vh; */
 }
-/*  */
