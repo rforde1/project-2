@@ -142,15 +142,17 @@ module.exports = function(app) {
   //     res.json(results);
   //   });
   // });
-  app.put("/api/users/:userID", (req, res) => {
+  app.put("/api/users", (req, res) => {
+    console.log(req.body);
     db.User.update(
       {
         email: req.body.email,
-        password: req.body.password
+        displayName: req.body.displayName,
+        bio: req.body.bio
       },
       {
         where: {
-          id: req.params.userID
+          id: req.body.id
         }
       }
     ).then(results => {
