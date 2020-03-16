@@ -52,6 +52,32 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/user/:userID", function(req, res) {
+    db.User.findOne({
+      where: {
+        id: req.params.userID
+      },
+      include: [db.Post]
+    }).then(results => {
+      let posts = [];
+      results.dataValues.Posts.forEach(element => {
+        let thisPost = {
+          title: element.dataValues.title,
+          id: element.dataValues.id
+        };
+        posts.push(thisPost);
+      });
+      let user = {
+        id: results.dataValues.id,
+        email: results.dataValues.email,
+        displayName: results.dataValues.displayName,
+        bio: results.dataValues.bio,
+        posts: posts
+      };
+      res.render("other_profile", user);
+    });
+  });
+
   app.get("/home", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/home.html"));
   });
