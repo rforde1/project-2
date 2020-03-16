@@ -1,0 +1,48 @@
+/* Element Selectors */
+body{
+    background-image: url('../img/archer2.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/* Imported Fonts */
+@font-face{
+    font-family: baveuse;
+  src: url(../txt/baveuse.ttf);
+}
+@font-face{
+    font-family: baveuse-3d;
+  src: url(../txt/baveuse\ 3d.ttf);
+}
+/* Class Selectors */
+.title{
+    clear: both;
+    font-family: baveuse;
+    color:rgb(173, 102, 21);
+    font-size: 45px;
+    text-shadow: 5px 5px 5px gray;
+}
+
+.login{
+    clear: both;
+    font-family: baveuse;
+    color:rgb(173, 102, 21);
+    font-size: 25px;
+    text-shadow:  5px 5px 5px gray;
+}
+
+.login-link:hover{
+    font-family: baveuse-3d;
+}
+
+.lana-float-left{
+    float: left;
+    
+}
+/* Media Queries */
+@media only screen and (max-width: 992px) {
+    .lana-float-left {
+        display: none;
+      }
+    }

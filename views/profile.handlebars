@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -8,25 +7,75 @@
     </div>
   </div>
 </nav>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>{{displayName}}'s Page</h2>
-        <h4>Email: {{email}}</h4>
-        <h4>Bio: {{bio}}</h4>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h2><textarea readonly class="profileText" id="name" data-ID="{{id}}">{{displayName}}</textarea>'s Page</h2>
+      <h4>Email:<textarea readonly class="profileText" id="email">{{email}}</textarea> </h4>
+      <h4>Bio:<textarea readonly class="profileText" id="bio">{{bio}}</textarea> </h4>
+      <button id="profileEdit">Edit</button>
+      <ul>
+        {{#each posts}}
+        <li >
+          <a href="/posts/{{id}}">
+            {{title}}
+          </a>
+          <button class="deletePost" data-postID={{id}}>Delete Post</button>
+        </li>
+        {{/each}}
+      </ul>
 
-        <ul>
-            {{#each posts}}
-            <li data-postID={{id}}> {{title}} </li>
-            {{/each}}
-        </ul>
-
-      </div>
     </div>
   </div>
+</div>
 
 
 
 
 
-{{!-- <script> src="js/members.js"</script> --}}
+<script>
+  $("#profileEdit").one("click",makeChanges);
+  $(".deletePost").on("click",function(){
+    deletePost($(this));
+  })
+
+  function makeChanges() {
+    console.log("hi");
+    $(".profileText").attr("readonly", false);
+    $("#profileEdit").text("Save Changes");
+     $("#profileEdit").one("click",function() {
+      saveChanges();
+    }); 
+  }
+
+  function saveChanges() {
+    let changes = {
+      id: $("#name").data("id"),
+      email: $.trim($("#email").val()),
+      displayName: $.trim($("#name").val()),
+      bio: $.trim($("#bio").val())
+    }
+    console.log(changes);
+    $.ajax({
+      url:"/api/users",
+      method:"PUT",
+      data:changes
+    }).then(results =>{
+      console.log(results);
+    });
+
+    //$("#profileEdit").one("click",makeChanges);
+    $("#profileEdit").text("Edit");
+  }
+
+
+  function deletePost(btn){
+    $.ajax({
+      url:"/api/posts/"+btn.data("postid"),
+      method: "DELETE"
+    }).then(results =>{
+       location.reload();
+    });
+ 
+  }
+</script>
