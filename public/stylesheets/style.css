@@ -2,10 +2,21 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
-
+@font-face{
+  font-family: baveuse;
+src: url(../txt/baveuse.ttf);
+}
+@font-face{
+  font-family: baveuse-3d;
+src: url(../txt/baveuse\ 3d.ttf);
+}
 
 body{
   /* background-color: chartreuse; */
+}
+
+h1,h2,h3{
+  font-family: baveuse;
 }
 
 .signup-image{
