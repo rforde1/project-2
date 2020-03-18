@@ -31,3 +31,16 @@ h1,h2,h3{
   align-items: center;
   /* height: 100vh; */
 }
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(96, 140, 230);
+  color: white;
+  text-align: center;
+}
+
+
+
