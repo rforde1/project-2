@@ -1,0 +1,85 @@
+<style>
+    #postCard {
+        width: 100%;
+        text-align: center;
+    }
+
+    #postPic {
+        width: 100%;
+        height: 300px;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center" style="">
+        <div class="col-8">
+
+            <div class="row">
+
+                <div class="col mb-4">
+
+                    <div class="card" id="postCard">
+                        <img class="card-img-top" id="postPic"
+                            src="https://releasedatetv.com/wp-content/uploads/2016/06/archercnasdk.jpg"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h1 class="card-title">{{title}}</h1>
+                            <p class="card-text">
+                                {{body}}
+                            </p>
+                            <p>
+                                <span>Posted By: <a href="/user/{{userId}}">{{displayName}}</a></span>
+                                <span>Created At: {{created}}</span>
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            {{#each replies}}
+            <div class="row">
+                <div class="col mb-4">
+                    <div class="card replyCard">
+                        <div class="card-body">
+                            <div class="card-text">
+                                <p>{{body}}</p>
+                                <span><a href="/user/{{userId}}">Posted By User: {{userId}}</a></span>
+                                <span>Created At: {{created}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+            <div class="row">
+                <div class="col mb-4">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-primary text-white">Comments</span>
+                        </div>
+                        <textarea id="replyText" class="form-control" aria-label="With textarea"></textarea>
+                        <button data-postId={{id}} data-viewer={{viewerId}} id="replyButton" class="btn btn-primary float-right">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $("#replyButton").on("click",function(){
+        createReply($(this).data("postid"), $(this).data("viewer"));
+    });
+    function createReply(postId, viewer){
+        let post = {
+            body: $.trim($("#replyText").val()),
+            PostId: postId,
+            UserId: viewer
+        };
+        $.post("/api/replies",post).then(results => {
+            location.reload();
+        })
+    }
+</script>

@@ -11,10 +11,6 @@ src: url(../txt/baveuse.ttf);
 src: url(../txt/baveuse\ 3d.ttf);
 }
 
-body{
-  /* background-color: chartreuse; */
-}
-
 h1,h2,h3{
   font-family: baveuse;
 }
@@ -29,7 +25,6 @@ h1,h2,h3{
   display: flex;
   justify-content: center;
   align-items: center;
-  /* height: 100vh; */
 }
 
 .footer {
