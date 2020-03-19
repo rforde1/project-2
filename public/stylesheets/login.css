@@ -16,7 +16,7 @@ body{
 }
 /* Class Selectors */
 .title{
-    font-family: baveuse;
+    font-family: baveuse, Arial, Helvetica, sans-serif;
     color:rgb(224, 151, 14);
     font-size: 45px;
     text-shadow: 5px 5px 5px red
@@ -30,6 +30,6 @@ body{
 }
 
 .sign-up-link:hover{
-    font-family: baveuse-3d;
+    font-family: baveuse-3d,Arial, Helvetica, sans-serif;
 }
 /*  */
