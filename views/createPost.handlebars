@@ -1,0 +1,98 @@
+<style>
+    body,
+    html {
+        height: 100%;
+        margin: 0;
+    }
+
+    #createBG {
+        background-image: url("https://vignette.wikia.nocookie.net/archer/images/5/5a/Jane_Doe-60.jpg/revision/latest?cb=20170427092632");
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size:cover;
+
+    }
+
+    .container{
+        color:white;
+        font-size:18pt;
+        background-color: rgb(0, 0, 0, .3);
+    }
+    #category{
+        font-size: 20pt;
+    }
+    h1{
+        text-align: center;
+        color:white;
+    }
+</style>
+<div id="createBG">
+
+
+    <div class="container">
+            <h1>Create A New Post</h1>
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <form id="cms">
+                    <div class="form-group">
+                        <label for="title">Title:</label>
+                        <input placeholder="Post Title" type="text" class="form-control" id="title">
+                        <br />
+                        <label for="body">Body:</label>
+                        <textarea placeholder="Post Body" class="form-control" rows="10" id="body"></textarea>
+                        <div class="form-group" id="selectGroup">
+                            <label for="category">Select Category:</label>
+                            <select class="custom-select selectpicker" id="category">
+                            </select>
+                        </div>
+                        <br />
+                        <button class="btn btn-light float-right" type="submit" id="createPost" data-id={{id}}
+                            class="btn btn-success submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    getCategories();
+    let categories = {};
+    function getCategories() {
+        $.get("/api/categories").then(results => {
+            populateCategoryList(results);
+        })
+    }//getCategories
+
+    function populateCategoryList(results) {
+        results.forEach(element => {
+            $("#category").append(new Option(element.name), element.id);
+            categories[element.name] = element.id;
+        });
+
+    }
+    $("#cms").on("submit", function () {
+        event.preventDefault();
+    });
+    $("#createPost").on("click", function () {
+        let post = {
+            title: $.trim($("#title").val()),
+            body: $.trim($("#body").val()),
+            CategoryId: categories[$("#category").val()],
+            UserId: $("#createPost").data("id")
+        }
+
+        createPost(post);
+    });
+
+    function createPost(post) {
+        console.log(post);
+        $.post("/api/posts", post).then(() => {
+            location.reload();
+
+        });
+    }
+
+
+</script>

@@ -78,6 +78,10 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/createPost", function(req, res) {
+    res.render("createPost", { id: req.user.id });
+  });
+
   app.get("/home", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/home.html"));
   });
