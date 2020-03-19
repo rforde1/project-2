@@ -2,182 +2,117 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" />
-    <title>Archer Forums</title>
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" />
+  <title>Archer Forums</title>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css"> -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="stylesheets/style.css" rel="stylesheet">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    <script src="https://code.jquery.com/jquery.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="stylesheets/style.css" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 
 <body>
-    
-<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
-    <div class="container">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="members.html">ARCHER REDDIT</a>
-  
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-       
-        
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
-      </form>
-    </div>
-    </div> 
-  </nav>
-
-  
-<div class="container">
+  <!-- Container for title -->
+  <div class="container">
     <div class="row">
-      <div class="">
-        <h2 data-aos="zoom-in" data-duration="200">Welcome <span class="member-name"></span></h2>
+      <div class="col-md-12">
+        <h1 data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-duration="3000" class="intro-h1">Welcome
+          to the Archer Forum</h1>
+        <p class="intro-p" data-aos="fade-down-left" data-aos-duration="3000">Feel free to create and comment on any
+          post based on any season of the show. Do not hesitate to share
+          and banter or opinion with archer lovers like yourself! <strong>Have Fun!!</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <!-- Container for navigation to create post, view profile, or view mainpage -->
+    <div id="tooltip-one" role="tooltip">Create Post</div>
+    <a href=""><img src="img/Pam_Poovey.jpg" height="350px" width="200px" alt="createpost" id="create-post"></a>
 
-              <!-- MAIN -->
-              <main role="main">
-                <div class="container">
-                    <div class="row" style="">
-                        <div class="col-lg-9">
-                            <div class="jumbotron">
-                                <div class="container">
-                                    <h1 class="display-3">Hello, world!</h1>
-                                    <p>This is a template for a simple marketing or informational website. It includes a large
-                                        callout called a jumbotron and three supporting pieces of content. Use it as a starting
-                                        point to create something more unique.</p>
-                                    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-                                </div>
-                            </div>
-                            <div class="row row-cols-1 row-cols-md-2">
-                                <div class="col mb-4">
-                                    <div class="card">
-                                      <a href="single.html"> 
-                                        <img src="img/archerhomepage.jpg" class="card-img-top" alt="...">
-                                      </a>
+  
+    <div id="tooltip-two" role="tooltip">View Profile</div>
+    <a href=""><img src="img/kreiger.jpg" alt="view profile" height="350px" width="200px" id="view-profile"></a>
 
-                                      <div class="media mt-3 d-flex align-items-center">
-                                        <img src="img/archerhomepage.jpg" style="height: 50px; width: 50px; " class="mr-3 rounded-circle" alt="...">
-                                        <div class="media-body">
-                                          <h5 class="mt-0">User Name</h5>
-                                         
-                                        </div>
-                                      </div>
+ 
+    <div id="tooltip-three" role="tooltip">View All</div>
+    <a href=""><img src="img/Woodhouse.jpg" alt="view all" height="350px" width="200px" id="view-all"></a>
 
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card title</h5>
-                                            <p class="card-text">This is a longer card with supporting text below as a natural
-                                                lead-in to additional content. This content is a little bit longer.</p>
-                                        </div>
-                                    </div>
+  <!-- Container for posts -->
 
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h2 class="intro-h2">Mainpage Feed:</h2>
 
-                                </div>
-                                <div class="col mb-4">
-                                    <div class="card">
-                                      <a href="single.html"> 
-                                        <img src="img/archerhomepage.jpg" class="card-img-top" alt="...">
-                                      </a>
-
-                                      <div class="media mt-3 d-flex align-items-center">
-                                        <img src="img/archerhomepage.jpg" style="height: 50px; width: 50px; " class="mr-3 rounded-circle" alt="...">
-                                        <div class="media-body">
-                                          <h5 class="mt-0">User Name</h5>
-                                         
-                                        </div>
-                                      </div>
-
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card title</h5>
-                                            <p class="card-text">This is a longer card with supporting text below as a natural
-                                                lead-in to additional content. This content is a little bit longer.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col mb-4">
-
-
-                                    <div class="card">
-                                      <a href="single.html"> 
-                                        <img src="img/archerhomepage.jpg" class="card-img-top" alt="...">
-                                      </a>
-
-                                      <div class="media mt-3 d-flex align-items-center">
-                                        <img src="img/archerhomepage.jpg" style="height: 50px; width: 50px; " class="mr-3 rounded-circle" alt="...">
-                                        <div class="media-body">
-                                          <h5 class="mt-0">User Name</h5>
-                                         
-                                        </div>
-                                      </div>
-
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card title</h5>
-                                            <p class="card-text">This is a longer card with supporting text below as a natural
-                                                lead-in to additional content. This content is a little bit longer.</p>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                                <div class="col mb-4">
-                                    <div class="card">
-                                      <a href="single.html"> 
-                                        <img src="img/archerhomepage.jpg" class="card-img-top" alt="...">
-                                      </a>
-
-                                      <div class="media mt-3 d-flex align-items-center">
-                                        <img src="img/archerhomepage.jpg" style="height: 50px; width: 50px; " class="mr-3 rounded-circle" alt="...">
-                                        <div class="media-body">
-                                          <h5 class="mt-0">User Name</h5>
-                                         
-                                        </div>
-                                      </div>
-
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card title</h5>
-                                            <p class="card-text">This is a longer card with supporting text below as a natural
-                                                lead-in to additional content. This content is a little bit longer.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <div class="col-lg-3">
-                            <ul class="list-group">
-                                <li class="list-group-item">Season 1</li>
-                                <li class="list-group-item">Season 2</li>
-                                <li class="list-group-item">Season 3</li>
-                                <li class="list-group-item">Season 4</li>
-                                <li class="list-group-item">Season 5</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </main>
-
-              <!-- END MAIN -->
+        <!-- Card for post -->
+        <div class="card c-color" style="width: 40rem;" data-aos="fade-left" data-aos-duration="1000">
+          <img src="img/archerhomepage.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">User Name</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <!-- Link for single post goes below in <a> tag -->
+            <a href="#" class="btn btn-primary">View post and comments</a>
+          </div>
+        </div>
+        <br>
+        <br>
+        <!-- Card for post -->
+        <div class="card c-color" style="width: 40rem;" data-aos="fade-left" data-aos-duration="1000">
+          <img src="img/archerhomepage.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">User Name</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <!-- Link for single post goes below in <a> tag -->
+            <a href="#" class="btn btn-primary">View post and comments</a>
+          </div>
+        </div>
+        <br>
+        <br>
 
       </div>
     </div>
   </div>
-
-  
-  <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
-    <div class="container text-center">
-      <small>  &copy; Copyright 2020</small>
-    </div>
-  </footer>
-  
-
-
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/login.js"></script>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <!-- Init AOS  -->
+  <script>AOS.init()</script>
 </body>
+<footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+  <div class="container text-center">
+    <small> &copy; Copyright 2020</small>
+  </div>
+</footer>
 
 </html>
+
+
+<!-- <div class="col mb-4">
+  <div class="card">
+    <a href="single.html">
+      <img src="img/archerhomepage.jpg" class="card-img-top" alt="...">
+    </a>
+    <div class="media mt-3 d-flex align-items-center">
+      <img src="img/archerhomepage.jpg" style="height: 50px; width: 50px; " class="mr-3 rounded-circle" alt="...">
+      <div class="media-body">
+        <h5 class="mt-0">User Name</h5>
+      </div>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a longer card with supporting text below as a natural
+        lead-in to additional content. This content is a little bit longer.</p>
+    </div>
+  </div>
+</div>
+</div>
+ -->

@@ -1,7 +1,5 @@
-form.signup,
-form.login {
-  margin-top: 50px;
-}
+/* Element Selectors */
+
 @font-face{
   font-family: baveuse;
 src: url(../txt/baveuse.ttf);
@@ -11,10 +9,19 @@ src: url(../txt/baveuse.ttf);
 src: url(../txt/baveuse\ 3d.ttf);
 }
 
-h1,h2,h3{
-  font-family: baveuse;
+body{
+  background-image: url('../img/hut.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
+h1,h2,h3{
+  font-family: baveuse, Arial, Helvetica, sans-serif;
+}
+
+
+/* Class Selectors */
 .signup-image{
   height: 100vh;
   background-size: cover;
@@ -39,3 +46,34 @@ h1,h2,h3{
 
 
 
+.intro-h1{
+  font-size:75px;
+  color: rgb(250, 210, 160);
+}
+.intro-h2{
+  font-size:75px;
+  color:rgb(250, 210, 160);
+}
+.intro-p
+{
+  font-family:baveuse,Arial, Helvetica, sans-serif;
+  font-size:28px;
+  margin-bottom: 50px;
+  color:rgb(250, 210, 160)
+}
+
+.c-color{
+  background-color: bisque;
+}
+
+#tooltip-one{
+  display: none;
+}
+
+#tooltip-two{
+  display: none;
+}
+
+#tooltip-three{
+  display: none;
+}
