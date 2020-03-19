@@ -8,13 +8,43 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
-    <link href="stylesheets/style.css" rel="stylesheet">
+    <link href="stylesheets/style.css" type="text/css" rel="stylesheet">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="/members">ARCHER REDDIT</a>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/posts">Home </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/createPost">Create Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/members">Your Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+    </nav>
     {{{ body }}}
+    <footer id="sticky-footer" class="mt-50 page-footer py-4 bg-dark text-white-50">
+    <div class="container text-center">
+      <small>  &copy; Copyright 2020</small>
+    </div>
+  </footer>
 </body>
 
 </html>

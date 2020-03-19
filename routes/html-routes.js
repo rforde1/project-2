@@ -86,6 +86,38 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/home.html"));
   });
 
+  app.get("/posts/:postID", function(req, res) {
+    db.Post.findOne({
+      where: {
+        id: req.params.postID
+      },
+      include: [db.User, db.Reply]
+    }).then(results => {
+      let replies = [];
+
+      results.Replies.forEach(element => {
+        let newReply = {
+          body: element.body,
+          created: element.createdAt,
+          userId: element.UserId
+        };
+        replies.push(newReply);
+      });
+      let post = {
+        id: results.id,
+        title: results.title,
+        body: results.body,
+        created: results.createdAt,
+        displayName: results.User.displayName,
+        userId: results.User.id,
+        viewerId: req.user.id,
+        replies: replies
+      };
+
+      res.render("singlePost", post);
+    });
+  });
+
   app.get("/signup", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/signup2.html"));
   });
