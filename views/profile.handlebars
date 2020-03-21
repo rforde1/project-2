@@ -1,10 +1,24 @@
+<style>
+  .profileText{
+    text-align: center;
+    color: bisque;
+    font-size:30px
+  }
+  .back{
+    
+  }
 
-<div class="container">
+  #bio{
+    color: black;
+  }
+
+</style>
+<div class="container back">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <h2><textarea readonly class="profileText" id="name" data-ID="{{id}}">{{displayName}}</textarea>'s Page</h2>
-      <h4>Email:<textarea readonly class="profileText" id="email">{{email}}</textarea> </h4>
-      <h4>Bio:<textarea readonly class="profileText" id="bio">{{bio}}</textarea> </h4>
+    <div class="col-md-12">
+      <h2 class="profileText" id="name" data-ID="{{id}}">{{displayName}}'s Page</h2>
+      <h4 class="profileText" id="email">{{email}} </h4>
+      <h4 class="profileText">Bio:<textarea readonly class="profileText" id="bio">{{bio}}</textarea> </h4>
       <button id="profileEdit">Edit</button>
       <ul>
         {{#each posts}}
@@ -20,6 +34,8 @@
     </div>
   </div>
 </div>
+
+</body>
 
 
 

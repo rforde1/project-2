@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+    {{!-- <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
                 aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,13 +38,24 @@
                     </li>
                 </ul>
             </div>
-    </nav>
+    </nav> --}}
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link link" href="/posts">Home </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link link" href="/createPost">Create Post</a>
+  </li>
+  <li class="nav-item link">
+    <a class="nav-link" href="/members">Your Profile</a>
+  </li>
+  <li class="nav-item link">
+    <a class="nav-link" href="/logout">Logout</a>
+  </li>
+</ul>
+   
     {{{ body }}}
-    <footer id="sticky-footer" class="mt-50 page-footer py-4 bg-dark text-white-50">
-    <div class="container text-center">
-      <small>  &copy; Copyright 2020</small>
-    </div>
-  </footer>
+   
 </body>
 
 </html>
