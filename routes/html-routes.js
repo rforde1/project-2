@@ -23,32 +23,36 @@ module.exports = function(app) {
   });
 
   // Here we've add our isAuthenticated middleware to this route.
-  // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  app.get("/members", isAuthenticated, function(req, res) {
-    console.log("yest");
-    // res.sendFile(path.join(__dirname, "../public/members.html"));
-    db.User.findOne({
-      where: {
-        id: req.user.id
-      },
-      include: [db.Post]
-    }).then(results => {
-      let posts = [];
-      results.dataValues.Posts.forEach(element => {
-        let thisPost = {
-          title: element.dataValues.title,
-          id: element.dataValues.id
-        };
-        posts.push(thisPost);
+  // If a user who is not logged in tries to access this route they will be redirected to the signup page+
+
+  // create route
+  app.get("/members", function(req, res) {
+    //call all posts
+    db.Post.findAll({}).then(results => {
+      let postsItems = [];
+      let categoriesItems = [];
+      results.forEach(item => {
+        postsItems.push({
+          id: item.dataValues.id,
+          title: item.dataValues.title,
+          body: item.dataValues.body.substring(0, 100),
+          createdAt: item.dataValues.createdAt
+        });
       });
-      let user = {
-        id: results.dataValues.id,
-        email: results.dataValues.email,
-        displayName: results.dataValues.displayName,
-        bio: results.dataValues.bio,
-        posts: posts
-      };
-      res.render("profile", user);
+      //call all categories
+      db.Category.findAll({}).then(results2 => {
+        results2.forEach(cat => {
+          categoriesItems.push({
+            id: cat.dataValues.id,
+            name: cat.dataValues.name
+          });
+        });
+        //render view and pass datas
+        res.render("members", {
+          posts: postsItems,
+          categories: categoriesItems
+        });
+      });
     });
   });
 
