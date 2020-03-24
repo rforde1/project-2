@@ -7,26 +7,51 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   app.get("/", function(req, res) {
-    // If the user already has an account send them to the members page
+    // If the user already has an account send them to the profile page
     if (req.user) {
-      res.redirect("/members");
+      res.redirect("/profile");
     }
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
   app.get("/login", function(req, res) {
-    // If the user already has an account send them to the members page
+    // If the user already has an account send them to the profile page
     if (req.user) {
-      res.redirect("/members");
+      res.redirect("/profile");
     }
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
   // Here we've add our isAuthenticated middleware to this route.
-  // If a user who is not logged in tries to access this route they will be redirected to the signup page+
+  // If a user who is not logged in tries to access this route they will be redirected to the signup page
+  app.get("/profile", isAuthenticated, function(req, res) {
+    db.User.findOne({
+      where: {
+        id: req.user.id
+      },
+      include: [db.Post]
+    }).then(results => {
+      let posts = [];
+      results.dataValues.Posts.forEach(element => {
+        let thisPost = {
+          title: element.dataValues.title,
+          id: element.dataValues.id
+        };
+        posts.push(thisPost);
+      });
+      let user = {
+        id: results.dataValues.id,
+        email: results.dataValues.email,
+        displayName: results.dataValues.displayName,
+        bio: results.dataValues.bio,
+        posts: posts
+      };
+      res.render("profile", user);
+    });
+  });
 
   // create route
-  app.get("/members", function(req, res) {
+  app.get("/posts", function(req, res) {
     //call all posts
     db.Post.findAll({}).then(results => {
       let postsItems = [];
@@ -48,7 +73,7 @@ module.exports = function(app) {
           });
         });
         //render view and pass datas
-        res.render("members", {
+        res.render("posts", {
           posts: postsItems,
           categories: categoriesItems
         });
