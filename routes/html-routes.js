@@ -7,26 +7,24 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   app.get("/", function(req, res) {
-    // If the user already has an account send them to the members page
+    // If the user already has an account send them to the profile page
     if (req.user) {
-      res.redirect("/members");
+      res.redirect("/profile");
     }
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
   app.get("/login", function(req, res) {
-    // If the user already has an account send them to the members page
+    // If the user already has an account send them to the profile page
     if (req.user) {
-      res.redirect("/members");
+      res.redirect("/profile");
     }
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  app.get("/members", isAuthenticated, function(req, res) {
-    console.log("yest");
-    // res.sendFile(path.join(__dirname, "../public/members.html"));
+  app.get("/profile", isAuthenticated, function(req, res) {
     db.User.findOne({
       where: {
         id: req.user.id
@@ -49,6 +47,37 @@ module.exports = function(app) {
         posts: posts
       };
       res.render("profile", user);
+    });
+  });
+
+  // create route
+  app.get("/posts", function(req, res) {
+    //call all posts
+    db.Post.findAll({}).then(results => {
+      let postsItems = [];
+      let categoriesItems = [];
+      results.forEach(item => {
+        postsItems.push({
+          id: item.dataValues.id,
+          title: item.dataValues.title,
+          body: item.dataValues.body.substring(0, 100),
+          createdAt: item.dataValues.createdAt
+        });
+      });
+      //call all categories
+      db.Category.findAll({}).then(results2 => {
+        results2.forEach(cat => {
+          categoriesItems.push({
+            id: cat.dataValues.id,
+            name: cat.dataValues.name
+          });
+        });
+        //render view and pass datas
+        res.render("posts", {
+          posts: postsItems,
+          categories: categoriesItems
+        });
+      });
     });
   });
 
