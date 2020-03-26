@@ -49,35 +49,27 @@ module.exports = function(app) {
       res.render("profile", user);
     });
   });
-
-  // create route
   app.get("/posts", function(req, res) {
-    //call all posts
-    db.Post.findAll({}).then(results => {
-      let postsItems = [];
-      let categoriesItems = [];
-      results.forEach(item => {
-        postsItems.push({
-          id: item.dataValues.id,
-          title: item.dataValues.title,
-          body: item.dataValues.body.substring(0, 100),
-          createdAt: item.dataValues.createdAt
+    db.Category.findAll({ include: [db.Post] }).then(results => {
+      let categories = [];
+
+      results.forEach(element => {
+        let currPosts = [];
+        element.Posts.forEach(post => {
+          let thisPost = {
+            id: post.id,
+            title: post.title,
+            created: post.createdAt
+          };
+          currPosts.push(thisPost);
         });
+        let thisCat = {
+          name: element.name,
+          posts: currPosts
+        };
+        categories.push(thisCat);
       });
-      //call all categories
-      db.Category.findAll({}).then(results2 => {
-        results2.forEach(cat => {
-          categoriesItems.push({
-            id: cat.dataValues.id,
-            name: cat.dataValues.name
-          });
-        });
-        //render view and pass datas
-        res.render("posts", {
-          posts: postsItems,
-          categories: categoriesItems
-        });
-      });
+      res.render("posts", { categories: categories });
     });
   });
 

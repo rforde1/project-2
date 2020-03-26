@@ -15,55 +15,66 @@
   <br>
 
   <!-- Container for posts -->
-
-  <div class="container">
+<div class="container">
     <div class="row">
 
         <div class="col-lg-9">
-            <div class="row">
-
-                {{#each posts as |post|}}
-                    <div class="col-md-6">
-       
-
-                        <!-- Card for post -->
-                        <div class="card c-color" data-aos="fade-left" data-aos-duration="1000">
+            {{#each categories}}
+            <div class="row categoryRow" id={{name}}>
+                {{#each posts}}
+                <div class="col-md-6">
+                    <!-- Card for post -->
+                    <div class="card c-color" data-aos="fade-left" data-aos-duration="1000">
                         <img src="img/archerhomepage.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <small>{{post.createdAt}}</small>
-                            <h3 class="card-title">{{post.title}}</h3>
-                            <p class="card-text">{{post.body}}</p>
+                            <small>{{created}}</small>
+                            <h3 class="card-title">{{title}}</h3>
                             <!-- Link for single post goes below in <a> tag -->
-                            <a href="#" class="btn btn-secondary">View post and comments</a>
+                            <a href="/posts/{{id}}" class="btn btn-secondary">View post and comments</a>
                         </div>
-                        </div>
-                
                     </div>
-
+                </div>
                 {{/each}}
-
             </div>
-
+            {{/each}}
         </div>
-        <div class="col-lg-3">
+                <div class="col-lg-3">
 
             <ul class="list-group">
-                {{#each categories as |category|}}
-                <li class="list-group-item"><a href="/category-post/1"> {{category.name}}</a></li>
+                {{#each categories}}
+                <li class="list-group-item"><button class="btn categoryButton"> {{name}}</button></li>
                   {{/each}}
             </ul>
 
         </div>
-
-
-  
-
-
     </div>
-  </div>
+</div>
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="js/login.js"></script>
   <script src="https://unpkg.com/@popperjs/core@2"></script>
   <!-- Init AOS  -->
   <script>AOS.init()</script>
+
+  <script>
+      $(document).ready(function (){
+          let test = $(".categoryRow").slice(1);
+         test.each(function(){
+             $(this).hide();
+         });
+      });
+
+      $(".categoryButton").on("click",function(){
+          hideRows();
+          selectCategory($.trim($(this).text()));
+      });
+
+      function selectCategory(catName){
+        $("#"+catName).show();
+      }
+
+      function hideRows(){
+          $(".categoryRow").hide();
+      }
+
+  </script>
