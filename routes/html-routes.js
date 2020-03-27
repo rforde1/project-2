@@ -7,26 +7,24 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   app.get("/", function(req, res) {
-    // If the user already has an account send them to the members page
+    // If the user already has an account send them to the profile page
     if (req.user) {
-      res.redirect("/members");
+      res.redirect("/profile");
     }
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
   app.get("/login", function(req, res) {
-    // If the user already has an account send them to the members page
+    // If the user already has an account send them to the profile page
     if (req.user) {
-      res.redirect("/members");
+      res.redirect("/profile");
     }
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  app.get("/members", isAuthenticated, function(req, res) {
-    console.log("yest");
-    // res.sendFile(path.join(__dirname, "../public/members.html"));
+  app.get("/profile", isAuthenticated, function(req, res) {
     db.User.findOne({
       where: {
         id: req.user.id
@@ -49,6 +47,29 @@ module.exports = function(app) {
         posts: posts
       };
       res.render("profile", user);
+    });
+  });
+  app.get("/posts", function(req, res) {
+    db.Category.findAll({ include: [db.Post] }).then(results => {
+      let categories = [];
+
+      results.forEach(element => {
+        let currPosts = [];
+        element.Posts.forEach(post => {
+          let thisPost = {
+            id: post.id,
+            title: post.title,
+            created: post.createdAt
+          };
+          currPosts.push(thisPost);
+        });
+        let thisCat = {
+          name: element.name,
+          posts: currPosts
+        };
+        categories.push(thisCat);
+      });
+      res.render("posts", { categories: categories });
     });
   });
 

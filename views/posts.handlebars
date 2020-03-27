@@ -1,0 +1,80 @@
+<!-- Container for title -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-duration="3000" class="intro-h1">Welcome
+          to the Archer Forum</h1>
+        <p class="intro-p" data-aos="fade-down-left" data-aos-duration="3000">Feel free to create and comment on any
+          post based on any season of the show. Do not hesitate to share
+          and banter or opinion with archer lovers like yourself! <strong>Have Fun!!</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+
+  <!-- Container for posts -->
+<div class="container">
+    <div class="row">
+
+        <div class="col-lg-9">
+            {{#each categories}}
+            <div class="row categoryRow" id={{name}}>
+                {{#each posts}}
+                <div class="col-md-6">
+                    <!-- Card for post -->
+                    <div class="card c-color" data-aos="fade-left" data-aos-duration="1000">
+                        <img src="img/archerhomepage.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <small>{{created}}</small>
+                            <h3 class="card-title">{{title}}</h3>
+                            <!-- Link for single post goes below in <a> tag -->
+                            <a href="/posts/{{id}}" class="btn btn-secondary">View post and comments</a>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            {{/each}}
+        </div>
+                <div class="col-lg-3">
+
+            <ul class="list-group">
+                {{#each categories}}
+                <li class="list-group-item"><button class="btn categoryButton"> {{name}}</button></li>
+                  {{/each}}
+            </ul>
+
+        </div>
+    </div>
+</div>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/login.js"></script>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <!-- Init AOS  -->
+  <script>AOS.init()</script>
+
+  <script>
+      $(document).ready(function (){
+          let test = $(".categoryRow").slice(1);
+         test.each(function(){
+             $(this).hide();
+         });
+      });
+
+      $(".categoryButton").on("click",function(){
+          hideRows();
+          selectCategory($.trim($(this).text()));
+      });
+
+      function selectCategory(catName){
+        $("#"+catName).show();
+      }
+
+      function hideRows(){
+          $(".categoryRow").hide();
+      }
+
+  </script>
