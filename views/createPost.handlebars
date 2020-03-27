@@ -5,14 +5,14 @@
         margin: 0;
     }
 
-    #createBG {
+    {{!-- #createBG {
         background-image: url("https://vignette.wikia.nocookie.net/archer/images/5/5a/Jane_Doe-60.jpg/revision/latest?cb=20170427092632");
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
 
 
-    }
+    } --}}
 
     #createContainer {
         color: white;
@@ -29,6 +29,8 @@
         color: white;
     }
 </style>
+
+
 <div id="createBG">
 
 
@@ -40,7 +42,7 @@
                     <div class="form-group">
                         <label for="title">Title:</label>
                         <input placeholder="Post Title" type="text" class="form-control" id="title">
-                        <br />
+                        <br/>
                         <label for="body">Body:</label>
                         <textarea placeholder="Post Body" class="form-control" rows="10" id="body"></textarea>
                         <div class="form-group" id="selectGroup">
@@ -59,6 +61,7 @@
 </div>
 
 <script>
+    AOS.init()
     getCategories();
     let categories = {};
     function getCategories() {
@@ -98,3 +101,4 @@
 
 
 </script>
+ {{!-- <script>AOS.init()</script> --}}

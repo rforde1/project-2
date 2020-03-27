@@ -1,43 +1,50 @@
 <style>
-  .profileText{
+  .profileText {
     text-align: center;
     color: bisque;
-    font-size:30px
-  }
-  .back{
-    
+    font-size: 40px;
+    font-family: baveuse;
   }
 
-  #bio{
+  #bio {
     color: black;
-    
+
   }
 
+  .post-text-size {
+    font-family: baveuse;
+  }
+
+  .post-text-size:hover{
+    font-family: baveuse-3d;
+    font-size:40px
+  }
 </style>
-<div class="container back">
+<body>
+<div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 text-center">
       <h2 class="profileText" id="name" data-ID="{{id}}">{{displayName}}'s Page</h2>
       <h4 class="profileText" id="email">{{email}} </h4>
-      <h4 class="profileText">Bio:<textarea readonly class="profileText" id="bio">{{bio}}</textarea> </h4>
-      <button id="profileEdit">Edit</button>
-      <ul>
-        {{#each posts}}
-        <li >
-          <a href="/posts/{{id}}">
-            {{title}}
-          </a>
-          <button class="deletePost" data-postID={{id}}>Delete Post</button>
-        </li>
-        {{/each}}
-      </ul>
+      <h4 class="profileText">Bio:<textarea class="profileText" id="bio">{{bio}}</textarea> </h4>
+      <div class="text-center">
+        <button type="button" class="btn btn-outline-warning" id="profileEdit" style="500px">Edit</button>
+        <ul>
+          {{#each posts}}
+          <div class="card mb-3">
+            <a class="post-text-size" href="/posts/{{id}}">
+              {{title}}
+            </a>
 
+            <button class="btn btn-outline-warning deletePost" data-postID={{id}}>Delete Post</button>
+
+          </div>
+          {{/each}}
+        </ul>
+      </div>
     </div>
-
   </div>
-
 </div>
-
 
 </body>
 
@@ -46,8 +53,8 @@
 
 
 <script>
-  $("#profileEdit").one("click",makeChanges);
-  $(".deletePost").on("click",function(){
+  $("#profileEdit").one("click", makeChanges);
+  $(".deletePost").on("click", function () {
     deletePost($(this));
   })
 
@@ -55,9 +62,9 @@
     console.log("hi");
     $(".profileText").attr("readonly", false);
     $("#profileEdit").text("Save Changes");
-     $("#profileEdit").one("click",function() {
+    $("#profileEdit").one("click", function () {
       saveChanges();
-    }); 
+    });
   }
 
   function saveChanges() {
@@ -69,10 +76,10 @@
     }
     console.log(changes);
     $.ajax({
-      url:"/api/users",
-      method:"PUT",
-      data:changes
-    }).then(results =>{
+      url: "/api/users",
+      method: "PUT",
+      data: changes
+    }).then(results => {
       console.log(results);
     });
 
@@ -81,13 +88,13 @@
   }
 
 
-  function deletePost(btn){
+  function deletePost(btn) {
     $.ajax({
-      url:"/api/posts/"+btn.data("postid"),
+      url: "/api/posts/" + btn.data("postid"),
       method: "DELETE"
-    }).then(results =>{
-       location.reload();
+    }).then(results => {
+      location.reload();
     });
- 
+
   }
 </script>
