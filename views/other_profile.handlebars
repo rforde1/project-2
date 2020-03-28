@@ -1,5 +1,5 @@
 
-<div class="container">
+{{!-- <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <h2><textarea readonly class="profileText" id="name" data-ID="{{id}}">{{displayName}}</textarea>'s Page</h2>
@@ -19,4 +19,61 @@
 
     </div>
   </div>
+</div> --}}
+
+ <style>
+   .profil-imge{
+     width: 200px;
+   }
+ </style>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="card p-3">
+        <img src="https://p7.hiclipart.com/preview/340/956/944/computer-icons-user-profile-head-ico-download.jpg" alt="" class="profil-imge">
+
+        <h2>{{displayName}} </h2>
+        <h4>Email : {{email}} > </h4>
+        <hp>Bio: {{bio}}  </p>
+
+      </div>
+      <h2>
+        
+
+ 
+      
+
+    </div>
+  </div>
+
+<div class="card p-3">
+<h2>My Post</h2>
+<table class="table table-striped">
+  <thead>
+   
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Image</th>
+      <th scope="col">Title</th>
+      <th scope="col">Action</th>
+    </tr>
+  
+  </thead>
+  <tbody>
+      {{#each posts as |post|}}
+    <tr>
+     <th scope="col">{{post.id}}</th>
+      <td><img src="img/archerhomepage.jpg" alt="" class="rounded" style="width: 60px;"></td>
+      <td>{{post.title}}</td>
+      <td><a href="/posts/{{post.id}}">View Post</a></td>
+    </tr>
+       {{/each}}
+  </tbody>
+</table>
+
+
+</div>
+
+
+
 </div>

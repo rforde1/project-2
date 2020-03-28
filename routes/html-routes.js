@@ -46,6 +46,7 @@ module.exports = function(app) {
         bio: results.dataValues.bio,
         posts: posts
       };
+      console.log(user);
       res.render("profile", user);
     });
   });
