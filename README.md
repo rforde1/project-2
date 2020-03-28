@@ -58,5 +58,5 @@ Upon visiting the site for the first time, you will be asked to create an accoun
 
 ---
 ## License & Copyright
-© Luis Rodriguez, Jennifer Ma, Om Kapoor, Andres Valdovinos; UCI Coding Bootcamp 2020
+© Gt Coding Bootcamp 2020
 
