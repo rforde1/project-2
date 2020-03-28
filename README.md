@@ -30,9 +30,7 @@ Upon visiting the site for the first time, you will be asked to create an accoun
 
   ### Front-end  
   - Bootstrap
-  - Handlebars
-  - 
-  - 
+  - Handlebars 
 
   ### Back-end
   - Nodejs
@@ -45,9 +43,6 @@ Upon visiting the site for the first time, you will be asked to create an accoun
 
   ### Testing
   - Travis CI
-  - 
-  - 
-  - 
 
   ### Deployment
   - Heroku
@@ -57,5 +52,5 @@ Upon visiting the site for the first time, you will be asked to create an accoun
 
 ---
 ## License & Copyright
-© Luis Rodriguez, Jennifer Ma, Om Kapoor, Andres Valdovinos; UCI Coding Bootcamp 2020
+© Rami Forde, Gisele Soubeiga, Garrett Reichman; GA Coding Bootcamp 2020
 
