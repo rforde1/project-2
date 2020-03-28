@@ -1,4 +1,4 @@
-<style>
+{{!-- <style>
   .profileText{
     text-align: center;
     color: bisque;
@@ -39,33 +39,94 @@
 </div>
 
 
-</body>
+</body> --}}
+
+
+ <style>
+   .profil-imge{
+     width: 200px;
+   }
+ </style>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="card p-3">
+        <img src="https://p7.hiclipart.com/preview/340/956/944/computer-icons-user-profile-head-ico-download.jpg" alt="" class="profil-imge">
+
+        <h2 ><span data-ID="{{id}}" id="name" class="profileText" contenteditable="false">{{displayName}}</span> </h2>
+        <h4 >Email : <span class="profileText" contenteditable="false" id="email">{{email}} </span></h4>
+        <hp >Bio: <span class="profileText" contenteditable="false" id="bio"> {{bio}} </span> </p>
+      <button id="profileEdit">Edit</button>
+      </div>
+      <h2>
+        
+
+ 
+      
+
+    </div>
+  </div>
+
+<div class="card p-3">
+<h2>My Post</h2>
+<table class="table table-striped">
+  <thead>
+   
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Image</th>
+      <th scope="col">Title</th>
+      <th scope="col">Action</th>
+    </tr>
+  
+  </thead>
+  <tbody>
+      {{#each posts as |post|}}
+    <tr>
+     <th scope="col">{{post.id}}</th>
+      <td><img src="img/archerhomepage.jpg" alt="" class="rounded" style="width: 60px;"></td>
+      <td><a href="/posts/{{post.id}}">{{post.title}}</a></td>
+      <td>
+         <button class="deletePost btn btn-danger" data-postID={{id}}>Delete</button>
+         
+        
+        
+      
+      </td>
+    </tr>
+       {{/each}}
+  </tbody>
+</table>
+
+
+</div>
 
 
 
+</div>
 
 
 <script>
   $("#profileEdit").one("click",makeChanges);
   $(".deletePost").on("click",function(){
-    deletePost($(this));
+   if(confirm("Delete item ?"))
+      deletePost($(this));
   })
-
   function makeChanges() {
     console.log("hi");
-    $(".profileText").attr("readonly", false);
+    $(".profileText").attr("contenteditable", true);
     $("#profileEdit").text("Save Changes");
      $("#profileEdit").one("click",function() {
       saveChanges();
     }); 
   }
-
   function saveChanges() {
+    console.log($.trim($("#email").text()));
     let changes = {
-      id: $("#name").data("id"),
-      email: $.trim($("#email").val()),
-      displayName: $.trim($("#name").val()),
-      bio: $.trim($("#bio").val())
+      id: $.trim($("#name").data("id")),
+      email: $.trim($("#email").text()),
+      displayName: $.trim($("#name").text()),
+      bio: $.trim($("#bio").text())
     }
     console.log(changes);
     $.ajax({
@@ -74,13 +135,12 @@
       data:changes
     }).then(results =>{
       console.log(results);
+          location.reload();
     });
-
     //$("#profileEdit").one("click",makeChanges);
     $("#profileEdit").text("Edit");
+
   }
-
-
   function deletePost(btn){
     $.ajax({
       url:"/api/posts/"+btn.data("postid"),
