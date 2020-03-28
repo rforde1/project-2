@@ -1,3 +1,9 @@
+<style>
+  .postCol{
+    margin-top: 15px;
+  }
+</style>
+
 <!-- Container for title -->
   <div class="container">
     <div class="row">
@@ -22,7 +28,7 @@
             {{#each categories}}
             <div class="row categoryRow" id={{name}}>
                 {{#each posts}}
-                <div class="col-md-6">
+                <div class="col-md-6 postCol">
                     <!-- Card for post -->
                     <div class="card c-color" data-aos="fade-left" data-aos-duration="1000">
                         <img src="img/archerhomepage.jpg" class="card-img-top" alt="...">
