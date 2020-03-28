@@ -10,7 +10,7 @@
 ## Author(s)
   - [Rami Forde](https://github.com/rforde1)(Project Management / Front-end / Design)
 
-  - [Gisele Soubeiga](https://github.com/Giselesoubeiga)(Front-end / Design/ )
+  - [Gisele Soubeiga](https://github.com/Giselesoubeiga)(Front-end / Design/ Handlebars)
 
   - [Garrett Reichman](https://github.com/GReichman) (Back-end / Testing / Routing)
 
@@ -29,10 +29,12 @@ Upon visiting the site for the first time, you will be asked to create an accoun
 ## Technologies Used
 
   ### Front-end  
-  - Bootstrap
+  - Html5
+  - Css3
+  - Bootstrap 4 
+  - JavaScript
   - Handlebars
-  - 
-  - 
+ 
 
   ### Back-end
   - Nodejs
@@ -45,9 +47,8 @@ Upon visiting the site for the first time, you will be asked to create an accoun
 
   ### Testing
   - Travis CI
-  - 
-  - 
-  - 
+ 
+ 
 
   ### Deployment
   - Heroku
