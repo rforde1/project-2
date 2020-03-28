@@ -66,6 +66,7 @@ module.exports = function(app) {
         });
         let thisCat = {
           name: element.name,
+          id: element.id,
           posts: currPosts
         };
         categories.push(thisCat);

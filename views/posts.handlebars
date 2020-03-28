@@ -26,7 +26,7 @@
 
         <div class="col-lg-9">
             {{#each categories}}
-            <div class="row categoryRow" id={{name}}>
+            <div class="row categoryRow" id={{id}}>
                 {{#each posts}}
                 <div class="col-md-6 postCol">
                     <!-- Card for post -->
@@ -48,7 +48,7 @@
 
             <ul class="list-group">
                 {{#each categories}}
-                <li class="list-group-item"><button class="btn categoryButton"> {{name}}</button></li>
+                <li class="list-group-item"><button class="btn categoryButton" data-cat={{id}}> {{name}}</button></li>
                   {{/each}}
             </ul>
 
@@ -72,7 +72,7 @@
 
       $(".categoryButton").on("click",function(){
           hideRows();
-          selectCategory($.trim($(this).text()));
+          selectCategory($.trim($(this).data("cat")));
       });
 
       function selectCategory(catName){
