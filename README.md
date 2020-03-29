@@ -4,7 +4,7 @@
 # Archer Forums
 
 ## Live Preview
- 
+ https://fast-bayou-13599.herokuapp.com/
 
 
 ## Author(s)
@@ -25,7 +25,9 @@ Usage
 # Usage
 Upon visiting the site for the first time, you will be asked to create an account using an email address and a password. Once this is done, you you will be signed in and transferred to your profile page. From here, you may choose to edit your profile information (display name, email, blog) or delete any posts you make. To view all of the posts that have been created, click on the Home option on the navbar. From here you will be able to choose a category from the list on the right to view all posts related to the chosen topic. To view a post and its replies, click on its title. From here you will be able to read the post, see the display name of the user that created it, and reply to the post using the forms below the post. To create your own post, click on the Write Post option on the navbar. Here you will be asked to provide a title for the post, the text you wish it to contain, and a category chosen from a drop-down menu. Once finished, Click the submit button and the post will be created and you will be redirected to the page containing your new post.
 
- 
+ # Known Issue
+ If you dont manually log out, you will not be able to reconnect to the default route. If you go to /profile youll be able to access the rest of the site or logout.
+  
 ## Technologies Used
 
   ### Front-end  
